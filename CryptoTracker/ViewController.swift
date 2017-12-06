@@ -36,15 +36,17 @@ class ViewController: UIViewController {
                 // Parse through information
                 let rawObject:Dictionary = bitcoinObject["RAW"] as! Dictionary<String, Any>
                 let usdObject:Dictionary = rawObject["BTC"] as! Dictionary<String, Any>
-                let rateObject:Dictionary = usdObject["USD"] as! Dictionary<String, Any>
+                let btcObject:Dictionary = usdObject["USD"] as! Dictionary<String, Any>
                 
                 // Current price
-                let rate:NSNumber = rateObject["PRICE"] as! NSNumber
-                let rateCurrency = (formatter.string(from: rate)!)
-                let highDay:NSNumber = rateObject["HIGH24HOUR"] as! NSNumber
-                let highDayCurrency = (formatter.string(from: highDay)!)
-                let lowDay:NSNumber = rateObject["LOW24HOUR"] as! NSNumber
-                let lowDayCurrency =  (formatter.string(from: lowDay)!)
+                let rate:NSNumber = btcObject["PRICE"] as! NSNumber
+                    let rateCurrency = (formatter.string(from: rate)!)
+                // High day price
+                let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
+                    let highDayCurrency = (formatter.string(from: highDay)!)
+                // Low day price
+                let lowDay:NSNumber = btcObject["LOW24HOUR"] as! NSNumber
+                    let lowDayCurrency =  (formatter.string(from: lowDay)!)
                 
                 
                 // Changing UI
