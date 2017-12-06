@@ -12,12 +12,20 @@ import Alamofire
 class ViewController: UIViewController {
     
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var highLabel: UILabel!
+    @IBOutlet weak var lowLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Currency formatter
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
         ///
         priceLabel.text = "..."
+        highLabel.text = "..."
+        lowLabel.text = "..."
 
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
             print(response)
@@ -31,11 +39,18 @@ class ViewController: UIViewController {
                 let rateObject:Dictionary = usdObject["USD"] as! Dictionary<String, Any>
                 
                 // Current price
-                let rate:Float = rateObject["PRICE"] as! Float
+                let rate:NSNumber = rateObject["PRICE"] as! NSNumber
+                let rateCurrency = (formatter.string(from: rate)!)
+                let highDay:NSNumber = rateObject["HIGH24HOUR"] as! NSNumber
+                let highDayCurrency = (formatter.string(from: highDay)!)
+                let lowDay:NSNumber = rateObject["LOW24HOUR"] as! NSNumber
+                let lowDayCurrency =  (formatter.string(from: lowDay)!)
                 
                 
                 // Changing UI
-                self.priceLabel.text = "S\(rate)"
+                self.priceLabel.text = "\(rateCurrency)" // Current price
+                self.highLabel.text = "\(highDayCurrency)"
+                self.lowLabel.text = "\(lowDayCurrency)"
             }
             
             

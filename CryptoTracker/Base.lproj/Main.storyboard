@@ -1,39 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CryptoTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekW-K1-k35">
-                                <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Green Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Rma-XK-bXH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17T-jz-ssi">
+                                <rect key="frame" x="170" y="535" width="219" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uq4-kN-U9s">
+                                <rect key="frame" x="32" y="534" width="219" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekW-K1-k35">
+                                <rect key="frame" x="32" y="173" width="312" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="46"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="17T-jz-ssi" secondAttribute="bottom" constant="222" id="6sB-1Y-JKj"/>
+                            <constraint firstAttribute="bottom" secondItem="Rma-XK-bXH" secondAttribute="bottom" id="AQ0-rg-k3b"/>
+                            <constraint firstItem="Rma-XK-bXH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Abu-Wt-y3I"/>
+                            <constraint firstItem="17T-jz-ssi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="170" id="NNQ-dm-jfD"/>
+                            <constraint firstItem="Rma-XK-bXH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QOr-x1-ZQq"/>
+                            <constraint firstItem="Rma-XK-bXH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SeL-KV-sys"/>
+                            <constraint firstItem="uq4-kN-U9s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="U15-GZ-Yev"/>
+                            <constraint firstItem="Rma-XK-bXH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a1d-53-Qdx"/>
+                            <constraint firstItem="Rma-XK-bXH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dDx-Jl-UZE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uq4-kN-U9s" secondAttribute="trailing" constant="124" id="e6o-Yw-V9B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="17T-jz-ssi" secondAttribute="trailing" constant="-30" id="kY7-jy-QfE"/>
+                            <constraint firstItem="Rma-XK-bXH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yF1-yJ-JI4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uq4-kN-U9s" secondAttribute="bottom" constant="223" id="z0z-rZ-dQZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="highLabel" destination="17T-jz-ssi" id="kjE-Qz-z8g"/>
+                        <outlet property="lowLabel" destination="uq4-kN-U9s" id="PZE-1B-SeP"/>
                         <outlet property="priceLabel" destination="ekW-K1-k35" id="eid-vu-psh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="105.66502463054188"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Green Gradient" width="400" height="833"/>
+    </resources>
 </document>
