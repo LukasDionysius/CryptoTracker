@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         highLabel.text = "..."
         lowLabel.text = "..."
 
+        
+        // Calling API using Alamofire and putting it in dictionaries
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
             print(response)
     
