@@ -87,11 +87,17 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                 <state key="normal" title="BTC" backgroundImage="leftBtn"/>
+                                <connections>
+                                    <action selector="BTCBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WEX-nd-dfi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-jU-ZWk">
                                 <rect key="frame" x="187" y="650" width="150" height="128"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                 <state key="normal" title="ETH" backgroundImage="rightBtn"/>
+                                <connections>
+                                    <action selector="ETHBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bJk-0s-iXq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
