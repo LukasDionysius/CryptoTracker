@@ -6,17 +6,27 @@
 //  Copyright © 2017 Lukas Michaels. All rights reserved.
 //
 
+// Video that helps me understand Alamofire:
+// https://www.youtube.com/watch?v=4ipvI7zpVg8&t=1226s
+
 import UIKit
 import Alamofire
 
+
+
 class ViewController: UIViewController {
     
+    // Labels that are attached to UI counterparts
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var highLabel: UILabel!
     @IBOutlet weak var lowLabel: UILabel!
     @IBOutlet weak var cryptoLabel: UILabel!
     
-    /// Bitcoin button
+    
+    
+    /// ***************************************************************
+    /// BTC button method
+    /// ***************************************************************
     @IBAction func BTCBtn(_ sender: Any) {
         print("BTC refresh pressed")
         
@@ -24,14 +34,16 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
-        ///
+        // Labels
         cryptoLabel.text = "Bitcoin"
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
         
+        // API call using Alamofire
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
             
+            // Put JSON response in dictionary
             if let bitcoinJSON = response.result.value {
                 let bitcoinObject:Dictionary = bitcoinJSON as! Dictionary<String, Any>
                 
@@ -60,7 +72,9 @@ class ViewController: UIViewController {
         }
     }
     
-    /// Ethereum button
+    /// ***************************************************************
+    /// ETH button method
+    /// ***************************************************************
     @IBAction func ETHBtn(_ sender: Any) {
         print("ETH refresh pressed")
         
@@ -68,12 +82,13 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
-        ///
+        // Labels
         cryptoLabel.text = "Ethereum"
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
         
+        // API call using Alamofire
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD").responseJSON { response in
             
             if let bitcoinJSON = response.result.value {
@@ -104,9 +119,9 @@ class ViewController: UIViewController {
         }
     }
     
-    ///
-    /// Refresh button
-    ///
+    /// ***************************************************************
+    /// Refresh button method
+    /// ***************************************************************
     @IBAction func refreshBtn(_ sender: Any) {
 
         print("Refresh pressed")
@@ -115,11 +130,12 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
-        ///
+        // Labels
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
         
+        // API calls using Alamofire
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
     
             if let bitcoinJSON = response.result.value {
@@ -150,6 +166,9 @@ class ViewController: UIViewController {
         }
     }
     
+    // ***************************************************************
+    // Method called when app is opened for first time
+    // ***************************************************************
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -157,7 +176,7 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
-        ///
+        // Labels
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
@@ -189,12 +208,7 @@ class ViewController: UIViewController {
                 self.highLabel.text = "\(highDayCurrency)"
                 self.lowLabel.text = "\(lowDayCurrency)"
             }
-            
-            
-            
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
