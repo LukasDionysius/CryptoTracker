@@ -22,13 +22,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var lowLabel: UILabel!
     @IBOutlet weak var cryptoLabel: UILabel!
     
-    
+    // Global variable
+    var currCrypto = ""
     
     /// ***************************************************************
     /// BTC button method
     /// ***************************************************************
     @IBAction func BTCBtn(_ sender: Any) {
         print("BTC refresh pressed")
+        
+        // The "Refresh" method needs to know what page it's on
+        currCrypto = "BTC"
         
         // Currency formatter
         let formatter = NumberFormatter()
@@ -77,6 +81,9 @@ class ViewController: UIViewController {
     /// ***************************************************************
     @IBAction func ETHBtn(_ sender: Any) {
         print("ETH refresh pressed")
+        
+        // The "Refresh" method needs to know what page it's on
+        currCrypto = "ETH"
         
         // Currency formatter
         let formatter = NumberFormatter()
@@ -134,34 +141,67 @@ class ViewController: UIViewController {
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
-        
-        // API calls using Alamofire
-        Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
     
-            if let bitcoinJSON = response.result.value {
-                let bitcoinObject:Dictionary = bitcoinJSON as! Dictionary<String, Any>
-                
-                // Parse through information
-                let rawObject:Dictionary = bitcoinObject["RAW"] as! Dictionary<String, Any>
-                let usdObject:Dictionary = rawObject["BTC"] as! Dictionary<String, Any>
-                let btcObject:Dictionary = usdObject["USD"] as! Dictionary<String, Any>
-                
-                // Current price
-                let rate:NSNumber = btcObject["PRICE"] as! NSNumber
-                let rateCurrency = (formatter.string(from: rate)!)
-                // High day price
-                let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
-                let highDayCurrency = (formatter.string(from: highDay)!)
-                // Low day price
-                let lowDay:NSNumber = btcObject["LOW24HOUR"] as! NSNumber
-                let lowDayCurrency =  (formatter.string(from: lowDay)!)
-                
-                // Changing UI
-                self.priceLabel.text = "\(rateCurrency)" // Current price
-                self.highLabel.text = "\(highDayCurrency)"
-                self.lowLabel.text = "\(lowDayCurrency)"
-                
-                print("Refresh succeed")
+        // Check to see if the refresh button is being pressed on BTC or ETH page
+        if self.currCrypto == "BTC" || self.currCrypto == "" {
+            // API call for Bitcoin
+            Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
+                if let bitcoinJSON = response.result.value {
+                    let bitcoinObject:Dictionary = bitcoinJSON as! Dictionary<String, Any>
+                    
+                    // Parse through information
+                    let rawObject:Dictionary = bitcoinObject["RAW"] as! Dictionary<String, Any>
+                    let usdObject:Dictionary = rawObject["BTC"] as! Dictionary<String, Any>
+                    let btcObject:Dictionary = usdObject["USD"] as! Dictionary<String, Any>
+                    
+                    // Current price
+                    let rate:NSNumber = btcObject["PRICE"] as! NSNumber
+                    let rateCurrency = (formatter.string(from: rate)!)
+                    // High day price
+                    let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
+                    let highDayCurrency = (formatter.string(from: highDay)!)
+                    // Low day price
+                    let lowDay:NSNumber = btcObject["LOW24HOUR"] as! NSNumber
+                    let lowDayCurrency =  (formatter.string(from: lowDay)!)
+                    
+                    // Changing UI
+                    self.priceLabel.text = "\(rateCurrency)" // Current price
+                    self.highLabel.text = "\(highDayCurrency)"
+                    self.lowLabel.text = "\(lowDayCurrency)"
+                    
+                    print("BTC refresh succeed")
+                }
+            }
+        }
+        // Check to see if the refresh button is being pressed on BTC or ETH page
+        if self.currCrypto == "ETH" {
+            // API call for Ethereum
+            Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD").responseJSON { response in
+                if let bitcoinJSON = response.result.value {
+                    let bitcoinObject:Dictionary = bitcoinJSON as! Dictionary<String, Any>
+                    
+                    // Parse through information
+                    let rawObject:Dictionary = bitcoinObject["RAW"] as! Dictionary<String, Any>
+                    let usdObject:Dictionary = rawObject["ETH"] as! Dictionary<String, Any>
+                    let btcObject:Dictionary = usdObject["USD"] as! Dictionary<String, Any>
+                    
+                    // Current price
+                    let rate:NSNumber = btcObject["PRICE"] as! NSNumber
+                    let rateCurrency = (formatter.string(from: rate)!)
+                    // High day price
+                    let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
+                    let highDayCurrency = (formatter.string(from: highDay)!)
+                    // Low day price
+                    let lowDay:NSNumber = btcObject["LOW24HOUR"] as! NSNumber
+                    let lowDayCurrency =  (formatter.string(from: lowDay)!)
+                    
+                    // Changing UI
+                    self.priceLabel.text = "\(rateCurrency)" // Current price
+                    self.highLabel.text = "\(highDayCurrency)"
+                    self.lowLabel.text = "\(lowDayCurrency)"
+                    
+                    print("ETH refresh succeed")
+                }
             }
         }
     }
