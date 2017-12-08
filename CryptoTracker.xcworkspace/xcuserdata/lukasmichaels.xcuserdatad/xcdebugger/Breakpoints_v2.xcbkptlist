@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CryptoTracker/ViewController.swift"
-            timestampString = "534391210.198281"
+            timestampString = "534407135.639839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

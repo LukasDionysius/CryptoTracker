@@ -18,10 +18,11 @@ class ViewController: UIViewController {
     // Labels that are attached to UI counterparts
     @IBOutlet weak var cryptoLabel: UILabel!
     
+    @IBOutlet weak var dayChangeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var highLabel: UILabel!
     @IBOutlet weak var lowLabel: UILabel!
-    @IBOutlet weak var dayChangeLabel: UILabel!
+
     
     
     
@@ -40,6 +41,11 @@ class ViewController: UIViewController {
         // Currency formatter
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        
+        // Percentage formatter
+        let percFormatter = NumberFormatter()
+        percFormatter.minimumFractionDigits = 0
+        percFormatter.maximumFractionDigits = 2
         
         // Labels
         cryptoLabel.text = "Bitcoin"
@@ -66,6 +72,9 @@ class ViewController: UIViewController {
                 // Day change
                 let dayChange:NSNumber = btcObject["CHANGE24HOUR"] as! NSNumber
                 let dayChangeCurrency = (formatter.string(from: dayChange)!)
+                // Day change percentage
+                let dayChangePerc:NSNumber = btcObject["CHANGEPCT24HOUR"] as! NSNumber
+                let dayChangePercPercentage = (percFormatter.string(from: dayChangePerc)!)
                 // High day price
                 let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
                 let highDayCurrency = (formatter.string(from: highDay)!)
@@ -75,7 +84,7 @@ class ViewController: UIViewController {
                 
                 // Changing UI
                 self.priceLabel.text = "\(rateCurrency)" // Current price
-                self.dayChangeLabel.text = "\(dayChangeCurrency)" 
+                self.dayChangeLabel.text = "\(dayChangeCurrency)  (\(dayChangePercPercentage)%)"
                 self.highLabel.text = "\(highDayCurrency)"
                 self.lowLabel.text = "\(lowDayCurrency)"
                 
@@ -97,11 +106,17 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
+        // Percentage formatter
+        let percFormatter = NumberFormatter()
+        percFormatter.minimumFractionDigits = 0
+        percFormatter.maximumFractionDigits = 2
+        
         // Labels
         cryptoLabel.text = "Ethereum"
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
+        dayChangeLabel.text = "..."
         
         // API call using Alamofire
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD").responseJSON { response in
@@ -120,6 +135,9 @@ class ViewController: UIViewController {
                 // Day change
                 let dayChange:NSNumber = btcObject["CHANGE24HOUR"] as! NSNumber
                 let dayChangeCurrency = (formatter.string(from: dayChange)!)
+                // Day change percentage
+                let dayChangePerc:NSNumber = btcObject["CHANGEPCT24HOUR"] as! NSNumber
+                let dayChangePercPercentage = (percFormatter.string(from: dayChangePerc)!)
                 // High day price
                 let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
                 let highDayCurrency = (formatter.string(from: highDay)!)
@@ -129,7 +147,7 @@ class ViewController: UIViewController {
                 
                 // Changing UI
                 self.priceLabel.text = "\(rateCurrency)" // Current price
-                self.dayChangeLabel.text = "\(dayChangeCurrency)"
+                self.dayChangeLabel.text = "\(dayChangeCurrency)  (\(dayChangePercPercentage)%)"
                 self.highLabel.text = "\(highDayCurrency)"
                 self.lowLabel.text = "\(lowDayCurrency)"
                 
@@ -149,10 +167,16 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
+        // Percentage formatter
+        let percFormatter = NumberFormatter()
+        percFormatter.minimumFractionDigits = 0
+        percFormatter.maximumFractionDigits = 2
+        
         // Labels
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
+        dayChangeLabel.text = "..."
     
         // Check to see if the refresh button is being pressed on BTC or ETH page
         if self.currCrypto == "BTC" || self.currCrypto == "" {
@@ -172,6 +196,9 @@ class ViewController: UIViewController {
                     // Day change
                     let dayChange:NSNumber = btcObject["CHANGE24HOUR"] as! NSNumber
                     let dayChangeCurrency = (formatter.string(from: dayChange)!)
+                    // Day change percentage
+                    let dayChangePerc:NSNumber = btcObject["CHANGEPCT24HOUR"] as! NSNumber
+                    let dayChangePercPercentage = (percFormatter.string(from: dayChangePerc)!)
                     // High day price
                     let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
                     let highDayCurrency = (formatter.string(from: highDay)!)
@@ -181,7 +208,7 @@ class ViewController: UIViewController {
                     
                     // Changing UI
                     self.priceLabel.text = "\(rateCurrency)" // Current price
-                    self.dayChangeLabel.text = "\(dayChangeCurrency)"
+                    self.dayChangeLabel.text = "\(dayChangeCurrency)  (\(dayChangePercPercentage)%)"
                     self.highLabel.text = "\(highDayCurrency)"
                     self.lowLabel.text = "\(lowDayCurrency)"
                     
@@ -207,6 +234,9 @@ class ViewController: UIViewController {
                     // Day change
                     let dayChange:NSNumber = btcObject["CHANGE24HOUR"] as! NSNumber
                     let dayChangeCurrency = (formatter.string(from: dayChange)!)
+                    // Day change percentage
+                    let dayChangePerc:NSNumber = btcObject["CHANGEPCT24HOUR"] as! NSNumber
+                    let dayChangePercPercentage = (percFormatter.string(from: dayChangePerc)!)
                     // High day price
                     let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
                     let highDayCurrency = (formatter.string(from: highDay)!)
@@ -216,7 +246,7 @@ class ViewController: UIViewController {
                     
                     // Changing UI
                     self.priceLabel.text = "\(rateCurrency)" // Current price
-                    self.dayChangeLabel.text = "\(dayChangeCurrency)"
+                    self.dayChangeLabel.text = "\(dayChangeCurrency)  (\(dayChangePercPercentage)%)"
                     self.highLabel.text = "\(highDayCurrency)"
                     self.lowLabel.text = "\(lowDayCurrency)"
                     
@@ -236,10 +266,16 @@ class ViewController: UIViewController {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         
+        // Percentage formatter
+        let percFormatter = NumberFormatter()
+        percFormatter.minimumFractionDigits = 0
+        percFormatter.maximumFractionDigits = 2
+        
         // Labels
         priceLabel.text = "..."
         highLabel.text = "..."
         lowLabel.text = "..."
+        dayChangeLabel.text = "..."
         
         // Calling API using Alamofire and putting it in dictionaries
         Alamofire.request("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD").responseJSON { response in
@@ -259,6 +295,9 @@ class ViewController: UIViewController {
                 // Day change
                 let dayChange:NSNumber = btcObject["CHANGE24HOUR"] as! NSNumber
                 let dayChangeCurrency = (formatter.string(from: dayChange)!)
+                // Day change percentage
+                let dayChangePerc:NSNumber = btcObject["CHANGEPCT24HOUR"] as! NSNumber
+                let dayChangePercPercentage = (percFormatter.string(from: dayChangePerc)!)
                 // High day price
                 let highDay:NSNumber = btcObject["HIGH24HOUR"] as! NSNumber
                     let highDayCurrency = (formatter.string(from: highDay)!)
@@ -268,7 +307,7 @@ class ViewController: UIViewController {
                 
                 // Changing UI
                 self.priceLabel.text = "\(rateCurrency)" // Current price
-                self.dayChangeLabel.text = "\(dayChangeCurrency)"
+                self.dayChangeLabel.text = "\(dayChangeCurrency)  (\(dayChangePercPercentage)%)"
                 self.highLabel.text = "\(highDayCurrency)"
                 self.lowLabel.text = "\(lowDayCurrency)"
             }
